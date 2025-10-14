@@ -79,11 +79,12 @@ data class DungeonMap(
             }
             is Item -> {
                 println("Ты нашёл ${entity.name}! Поднять? (y/n)")
-                if (readln().lowercase() == "y") {
+                if (readln().trim().lowercase() == "y") {
                     player.inventory.add(entity)
                     entities.remove(entity)
                 }
-                player.x = newX; player.y = newY
+                player.x = newX
+                player.y = newY
             }
             else -> {
                 player.x = newX
