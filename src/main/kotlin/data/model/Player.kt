@@ -12,6 +12,9 @@ class Player(
     override val symbol: Char = '@'
     val inventory = mutableListOf<Item>()
 
+    var healthPotionIdentified: Boolean? = null
+    var attackPotionIdentified: Boolean? = null
+
     override fun attack(target: Combatant) {
         println("Ты атаковал моба на $attackPower урона")
         target.takeDamage(attackPower)
