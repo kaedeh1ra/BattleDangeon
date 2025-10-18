@@ -7,12 +7,12 @@ import java.util.Random;
 
 public class Game {
     public static void start() {
-        Player player = new Player(0,0);
-        DangeonMap map = new DangeonMap(10,10,player);
+        Player player = new Player(0, 0);
+        DangeonMap map = new DangeonMap(10, 10, player);
 
         Random random = new Random();
-        map.spawnItems(random.nextInt(3,5));
-        map.spawnEnemies(random.nextInt(4,8));
+        map.spawnItems(random.nextInt(3, 5));
+        map.spawnEnemies(random.nextInt(4, 8));
 
         System.out.println("Добро пожаловать в подземелье!");
         System.out.println("Используй W/A/S/D для перемещение, I чтобы открыть инвентарь.\n");
@@ -47,7 +47,8 @@ public class Game {
                                     player.getInventory().get(index).use(player);
                                     player.getInventory().remove(index);
                                 }
-                            } catch (NumberFormatException ignored) {}
+                            } catch (NumberFormatException ignored) {
+                            }
                         }
                     }
                 }

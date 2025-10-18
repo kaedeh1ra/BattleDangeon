@@ -38,25 +38,68 @@ public class Player implements Entity, Combatant {
         return hp > 0;
     }
 
-    @Override public int getHp() { return hp; }
-    @Override public void setHp(int hp) { this.hp = hp; }
+    @Override
+    public int getHp() {
+        return hp;
+    }
 
-    @Override public int getAttackPower() { return attackPower; }
-    @Override public void setAttackPower(int attackPower) { this.attackPower = attackPower; }
+    @Override
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
 
-    @Override public int getX() { return x; }
-    @Override public void setX(int x) { this.x = x; }
+    @Override
+    public int getAttackPower() {
+        return attackPower;
+    }
 
-    @Override public int getY() { return y; }
-    @Override public void setY(int y) { this.y = y; }
+    @Override
+    public void setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
+    }
 
-    @Override public char getSymbol() { return symbol; }
+    @Override
+    public int getX() {
+        return x;
+    }
 
-    public List<Item> getInventory() { return inventory; }
+    @Override
+    public void setX(int x) {
+        this.x = x;
+    }
 
-    public Boolean getHealthPotionIdentified() { return healthPotionIdentified; }
-    public void setHealthPotionIdentified(Boolean healthPotionIdentified) { this.healthPotionIdentified = healthPotionIdentified; }
+    @Override
+    public int getY() {
+        return y;
+    }
 
-    public Boolean getAttackPotionIdentified() { return attackPotionIdentified; }
-    public void setAttackPotionIdentified(Boolean attackPotionIdentified) { this.attackPotionIdentified = attackPotionIdentified; }
+    @Override
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    @Override
+    public char getSymbol() {
+        return symbol;
+    }
+
+    public List<Item> getInventory() {
+        return inventory;
+    }
+
+    public Boolean getHealthPotionIdentified() {
+        return healthPotionIdentified;
+    }
+
+    public void setHealthPotionIdentified(Boolean healthPotionIdentified) {
+        this.healthPotionIdentified = healthPotionIdentified;
+    }
+
+    public Boolean getAttackPotionIdentified() {
+        return attackPotionIdentified;
+    }
+
+    public void setAttackPotionIdentified(Boolean attackPotionIdentified) {
+        this.attackPotionIdentified = attackPotionIdentified;
+    }
 }

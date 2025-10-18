@@ -21,7 +21,9 @@ public class DangeonMap {
         this.player = player;
     }
 
-    public int getEnemiesCount() { return enemiesCount; }
+    public int getEnemiesCount() {
+        return enemiesCount;
+    }
 
     public boolean isInside(int x, int y) {
         return x >= 0 && x < width && y >= 0 && y < height;
@@ -54,14 +56,14 @@ public class DangeonMap {
 
     public void spawnEnemies(int count) {
         enemiesCount = count;
-        for (int i=0;i<count;i++) {
+        for (int i = 0; i < count; i++) {
             int[] coords = randomFreeCell();
             entities.add(new Enemy(coords[0], coords[1]));
         }
     }
 
     public void spawnItems(int count) {
-        for (int i=0;i<count;i++) {
+        for (int i = 0; i < count; i++) {
             int[] coords = randomFreeCell();
             entities.add(ItemFactory.createRandomItem(coords[0], coords[1]));
         }

@@ -29,19 +29,53 @@ public class Enemy implements Entity, Combatant {
         System.out.println("У врага осталось " + hp + " hp");
     }
 
-    @Override public boolean isAlive() { return hp > 0; }
+    @Override
+    public boolean isAlive() {
+        return hp > 0;
+    }
 
-    @Override public int getHp() { return hp; }
-    @Override public void setHp(int hp) { this.hp = hp; }
+    @Override
+    public int getHp() {
+        return hp;
+    }
 
-    @Override public int getAttackPower() { return attackPower; }
-    @Override public void setAttackPower(int attackPower) { this.attackPower = attackPower; }
+    @Override
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
 
-    @Override public int getX() { return x; }
-    @Override public void setX(int x) { this.x = x; }
+    @Override
+    public int getAttackPower() {
+        return attackPower;
+    }
 
-    @Override public int getY() { return y; }
-    @Override public void setY(int y) { this.y = y; }
+    @Override
+    public void setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
+    }
 
-    @Override public char getSymbol() { return symbol; }
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    @Override
+    public char getSymbol() {
+        return symbol;
+    }
 }

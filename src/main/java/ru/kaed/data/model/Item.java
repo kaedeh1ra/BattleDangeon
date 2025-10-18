@@ -13,13 +13,30 @@ public class Item implements Entity {
         this.effect = effect;
     }
 
-    @Override public int getX() { return x; }
-    @Override public void setX(int x) { this.x = x; }
+    @Override
+    public int getX() {
+        return x;
+    }
 
-    @Override public int getY() { return y; }
-    @Override public void setY(int y) { this.y = y; }
+    @Override
+    public void setX(int x) {
+        this.x = x;
+    }
 
-    @Override public char getSymbol() { return symbol; }
+    @Override
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    @Override
+    public char getSymbol() {
+        return symbol;
+    }
 
     public String getVisibleName(Player player) {
         if (effect.getPotionType() == PotionType.HEALTH) {
@@ -44,7 +61,9 @@ public class Item implements Entity {
         System.out.println("Вы использовали " + getVisibleName(player) + ". " + message);
     }
 
-    public ItemEffect getEffect() { return effect; }
+    public ItemEffect getEffect() {
+        return effect;
+    }
 }
 
 abstract class ItemEffect {
@@ -54,57 +73,92 @@ abstract class ItemEffect {
         this.potionType = potionType;
     }
 
-    public PotionType getPotionType() { return potionType; }
+    public PotionType getPotionType() {
+        return potionType;
+    }
 
     public abstract String apply(Player player);
+
     public abstract boolean isNegative();
 
     public static class Heal extends ItemEffect {
         private final int amount;
-        public Heal(int amount) { super(PotionType.HEALTH); this.amount = amount; }
 
-        @Override public String apply(Player player) {
+        public Heal(int amount) {
+            super(PotionType.HEALTH);
+            this.amount = amount;
+        }
+
+        @Override
+        public String apply(Player player) {
             player.setHp(player.getHp() + amount);
             return "Восстановлено " + amount + " HP (HP=" + player.getHp() + ")";
         }
 
-        @Override public boolean isNegative() { return false; }
+        @Override
+        public boolean isNegative() {
+            return false;
+        }
     }
 
     public static class Poison extends ItemEffect {
         private final int amount;
-        public Poison(int amount) { super(PotionType.HEALTH); this.amount = amount; }
 
-        @Override public String apply(Player player) {
+        public Poison(int amount) {
+            super(PotionType.HEALTH);
+            this.amount = amount;
+        }
+
+        @Override
+        public String apply(Player player) {
             player.setHp(player.getHp() - amount);
             return "Отравление: -" + amount + " HP (HP=" + player.getHp() + ")";
         }
 
-        @Override public boolean isNegative() { return true; }
+        @Override
+        public boolean isNegative() {
+            return true;
+        }
     }
 
     public static class BuffAttack extends ItemEffect {
         private final int amount;
-        public BuffAttack(int amount) { super(PotionType.ATTACK); this.amount = amount; }
 
-        @Override public String apply(Player player) {
+        public BuffAttack(int amount) {
+            super(PotionType.ATTACK);
+            this.amount = amount;
+        }
+
+        @Override
+        public String apply(Player player) {
             player.setAttackPower(player.getAttackPower() + amount);
             return "Атака +" + amount + " (ATK=" + player.getAttackPower() + ")";
         }
 
-        @Override public boolean isNegative() { return false; }
+        @Override
+        public boolean isNegative() {
+            return false;
+        }
     }
 
     public static class DebuffAttack extends ItemEffect {
         private final int amount;
-        public DebuffAttack(int amount) { super(PotionType.ATTACK); this.amount = amount; }
 
-        @Override public String apply(Player player) {
+        public DebuffAttack(int amount) {
+            super(PotionType.ATTACK);
+            this.amount = amount;
+        }
+
+        @Override
+        public String apply(Player player) {
             player.setAttackPower(player.getAttackPower() - amount);
             return "Атака -" + amount + " (ATK=" + player.getAttackPower() + ")";
         }
 
-        @Override public boolean isNegative() { return true; }
+        @Override
+        public boolean isNegative() {
+            return true;
+        }
     }
 }
 
