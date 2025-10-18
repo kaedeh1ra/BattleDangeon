@@ -3,6 +3,7 @@ package ru.kaed.data
 import ru.kaed.data.model.Enemy
 import ru.kaed.data.model.Item
 import ru.kaed.data.model.ItemEffect
+import ru.kaed.data.model.ItemFactory
 import ru.kaed.data.model.Player
 import ru.kaed.data.repository.Entity
 import kotlin.math.min
@@ -45,11 +46,11 @@ data class DungeonMap(
     fun spawnItems(count: Int) {
         repeat(count) {
             val (x, y) = randomFreeCell()
-            entities.add(ItemFactory.createRandomItem(x, y, player))
+            entities.add(ItemFactory.createRandomItem(x, y))
         }
     }
 
-    fun movePlayer(dx: Int, dy: Int){
+    fun movePlayer(dx: Int, dy: Int) {
         val newX = player.x + dx
         val newY = player.y + dy
         if (!isInside(newX, newY)) {
@@ -59,7 +60,7 @@ data class DungeonMap(
 
         val entity = getEntityAt(newX, newY)
 
-        when(entity){
+        when (entity) {
             is Enemy -> {
                 player.attack(entity)
                 if (entity.isAlive()) entity.attack(player)
@@ -68,8 +69,9 @@ data class DungeonMap(
                     entities.remove(entity)
                 }
             }
+
             is Item -> {
-                println("Ты нашёл ${entity.name}! Взять? (y/n)")
+                println("Ты нашёл ${entity.getVisibleName(player)}! Взять? (y/n)")
                 if (readln().trim().lowercase() == "y") {
                     player.inventory.add(entity)
                     entities.remove(entity)
@@ -77,6 +79,7 @@ data class DungeonMap(
                 player.x = newX
                 player.y = newY
             }
+
             else -> {
                 player.x = newX
                 player.y = newY
@@ -93,50 +96,5 @@ data class DungeonMap(
         } while (!isFree(x, y))
         return x to y
     }
-
-}
-
-object ItemFactory {
-    fun createRandomItem(x: Int, y: Int, player: Player): Item {
-        val roll = Random.nextInt(100)
-
-        val effect: ItemEffect = when {
-            roll < 50 -> ItemEffect.Heal(Random.nextInt(3, 11))
-            roll < 75 -> ItemEffect.BuffAttack(Random.nextInt(3, 11))
-            roll < 90 -> ItemEffect.Poison(Random.nextInt(2, 6))
-            else -> ItemEffect.DebuffAttack(Random.nextInt(1, 4))
-        }
-
-        return Item(
-            x = x,
-            y = y,
-            name = effect.toString(),
-            effect = applyEffect(player = player, effect = effect)
-        )
-    }
-
-    private fun applyEffect(player: Player, effect: ItemEffect): (Player) -> Unit = {
-        when (effect) {
-            is ItemEffect.Heal -> {
-                val currentHP = min(effect.amount + player.hp, 3)
-                val increasedHP = currentHP - player.hp
-                player.hp = currentHP
-                println("Здоровье восстановлено на ${increasedHP}, HP: ${player.hp}")
-            }
-            is ItemEffect.Poison -> {
-                player.hp -= effect.amount
-                println("Здоровье уменьшено на ${effect.amount}, HP: ${player.hp}")
-            }
-            is ItemEffect.BuffAttack -> {
-                player.attackPower += effect.amount
-                println("Атака увеличена на ${effect.amount}, теперь ты наносишь ${player.attackPower} урона")
-            }
-            is ItemEffect.DebuffAttack -> {
-                player.attackPower -= effect.amount
-                println("Атака Уменьшена на ${effect.amount}, теперь ты наносишь ${player.attackPower} урона")
-            }
-        }
-    }
-
 
 }
