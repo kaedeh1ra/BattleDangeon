@@ -1,6 +1,7 @@
 package ru.kaed.data.model
 
 import ru.kaed.data.repository.Entity
+import kotlin.random.Random
 
 class Item(
     override var x: Int,
@@ -14,4 +15,11 @@ class Item(
         println("Ты использовал $name")
         effect(player)
     }
+}
+
+sealed class ItemEffect {
+    data class Heal(val amount: Int) : ItemEffect()
+    data class BuffAttack(val amount: Int) : ItemEffect()
+    data class Poison(val amount: Int) : ItemEffect()
+    data class DebuffAttack(val amount: Int) : ItemEffect()
 }
