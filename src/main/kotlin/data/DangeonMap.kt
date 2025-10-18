@@ -16,7 +16,8 @@ data class DungeonMap(
     val entities: MutableList<Entity> = mutableListOf()
 ) {
     private var _enemiesCount: Int = 0
-    var enemiesCount: Int = _enemiesCount
+    var enemiesCount: Int = 0
+        get() = _enemiesCount
 
 
     fun isInside(x: Int, y: Int) = x in 0..<width && y in 0..<height

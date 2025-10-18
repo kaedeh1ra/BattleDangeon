@@ -2,6 +2,7 @@ package ru.kaed
 
 import ru.kaed.data.DungeonMap
 import ru.kaed.data.model.Player
+import kotlin.random.Random
 
 class Game {
     companion object {
@@ -9,8 +10,8 @@ class Game {
             val player = Player(0, 0)
             val map = DungeonMap(10, 10, player)
 
-            map.spawnItems(3)
-            map.spawnEnemies(4)
+            map.spawnItems(Random.nextInt(3, 5))
+            map.spawnEnemies(Random.nextInt(4, 8))
 
             println("Добро пожаловать в подземелье!")
             println("Используй W/A/S/D для перемещение, I чтобы открыть инветарь.\n")
@@ -31,6 +32,7 @@ class Game {
                             player.inventory.forEachIndexed { i, item ->
                                 println("[$i] ${item.getVisibleName(player)}")
                             }
+
                             print("Использовать предмет под номером (или Enter чтобы выйти): ")
                             val input = readlnOrNull()?.trim()!!.toIntOrNull()
                             input?.let { index ->
@@ -43,7 +45,7 @@ class Game {
                     else -> println("Неизвестная команда.")
                 }
                 if (!player.isAlive()) println("Ты сдох! Игра окончена.")
-                if (map.enemiesCount == 0) print("Победа")
+                //if (map.enemiesCount == 0) print("Победа")
             }
         }
     }
