@@ -2,12 +2,14 @@ package ru.kaed.data.model
 
 import ru.kaed.data.repository.Combatant
 import ru.kaed.data.repository.Entity
+import kotlin.random.Random
+import kotlin.random.nextInt
 
 class Enemy(
     override var x: Int,
     override var y: Int,
-    override var hp: Int = 10,
-    override var attackPower: Int = 3
+    override var hp: Int = Random.nextInt(8, 16),
+    override var attackPower: Int = Random.nextInt(3, 6)
 ) : Entity, Combatant {
     override val symbol: Char = 'E'
 
