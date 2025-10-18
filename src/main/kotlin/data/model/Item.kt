@@ -43,7 +43,7 @@ data class Item(
 
 object ItemFactory {
 
-    private const val HP_POTION_VISIBLE_PROB = 0.5
+    private const val HP_POTION_VISIBLE_PROB = 0.6
     private const val POSITIVE_HP_PROB = 0.7
     private const val POSITIVE_ATK_PROB = 0.7
     private val HEAL_RANGE = 3..10
