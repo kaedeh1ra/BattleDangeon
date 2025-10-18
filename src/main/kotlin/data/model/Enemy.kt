@@ -15,7 +15,7 @@ class Enemy(
 
     override fun attack(target: Combatant) {
         target.takeDamage(attackPower)
-        println("Враг атаковал на ${attackPower} урона")
+        println("Враг атаковал на $attackPower урона")
     }
 
     override fun takeDamage(damage: Int) {

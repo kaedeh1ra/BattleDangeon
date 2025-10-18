@@ -15,10 +15,7 @@ data class DungeonMap(
     val player: Player,
     val entities: MutableList<Entity> = mutableListOf()
 ) {
-    private var _enemiesCount: Int = 0
     var enemiesCount: Int = 0
-        get() = _enemiesCount
-
 
     fun isInside(x: Int, y: Int) = x in 0..<width && y in 0..<height
 
@@ -42,7 +39,7 @@ data class DungeonMap(
 
 
     fun spawnEnemies(count: Int) {
-        _enemiesCount = count
+        enemiesCount = count
         repeat(count) {
             val (x, y) = randomFreeCell()
             entities.add(Enemy(x, y))
