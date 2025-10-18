@@ -1,4 +1,4 @@
-package data.model;
+package ru.kaed.data.model;
 
 import java.util.Random;
 

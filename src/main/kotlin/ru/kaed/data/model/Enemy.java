@@ -1,7 +1,7 @@
-package data.model;
+package ru.kaed.data.model;
 
-import data.repository.Combatant;
-import data.repository.Entity;
+import ru.kaed.data.repository.Combatant;
+import ru.kaed.data.repository.Entity;
 
 import java.util.Random;
 

@@ -1,8 +1,6 @@
-package data.model;
+package ru.kaed.data.model;
 
-import data.repository.Entity;
-
-import java.util.Random;
+import ru.kaed.data.repository.Entity;
 
 public class Item implements Entity {
     private int x, y;

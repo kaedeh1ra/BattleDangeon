@@ -1,5 +1,7 @@
-import data.DangeonMap;
-import data.model.Player;
+package ru.kaed;
+
+import ru.kaed.data.DangeonMap;
+import ru.kaed.data.model.Player;
 
 import java.util.Random;
 

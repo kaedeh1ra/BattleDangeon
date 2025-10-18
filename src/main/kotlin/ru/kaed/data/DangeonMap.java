@@ -1,7 +1,7 @@
-package data;
+package ru.kaed.data;
 
-import data.model.*;
-import data.repository.Entity;
+import ru.kaed.data.model.*;
+import ru.kaed.data.repository.Entity;
 
 import java.util.ArrayList;
 import java.util.List;

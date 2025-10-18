@@ -1,4 +1,4 @@
-package data.repository;
+package ru.kaed.data.repository;
 
 public interface Entity {
     int getX();
