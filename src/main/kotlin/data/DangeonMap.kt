@@ -2,11 +2,9 @@ package ru.kaed.data
 
 import ru.kaed.data.model.Enemy
 import ru.kaed.data.model.Item
-import ru.kaed.data.model.ItemEffect
 import ru.kaed.data.model.ItemFactory
 import ru.kaed.data.model.Player
 import ru.kaed.data.repository.Entity
-import kotlin.math.min
 import kotlin.random.Random
 
 data class DungeonMap(
@@ -17,7 +15,8 @@ data class DungeonMap(
 ) {
     private var _enemiesCount = 0
 
-    fun getEnemiesCount(): Int = _enemiesCount
+    val enemiesCount: Int
+        get() = _enemiesCount
 
     fun isInside(x: Int, y: Int) = x in 0..<width && y in 0..<height
 

@@ -45,7 +45,7 @@ class Game {
                     else -> println("Неизвестная команда.")
                 }
                 if (!player.isAlive()) println("Ты сдох! Игра окончена.")
-                if (map.getEnemiesCount() == 0) {
+                if (map.enemiesCount == 0) {
                     print("Молодец! Ты победил(а)")
                     break
                 }
