@@ -55,12 +55,17 @@ object ItemFactory {
         val showHpPotion = Random.nextDouble() < HP_POTION_VISIBLE_PROB
 
         val effect: ItemEffect = if (showHpPotion) {
-            if (Random.nextDouble() < POSITIVE_HP_PROB) ItemEffect.Heal(
+            if (Random.nextDouble() < POSITIVE_HP_PROB)
+                ItemEffect.Heal(
+                    Random.nextInt(
+                        HEAL_RANGE.first, HEAL_RANGE.last + 1
+                    )
+                )
+            else ItemEffect.Poison(
                 Random.nextInt(
-                    HEAL_RANGE.first, HEAL_RANGE.last + 1
+                    POISON_RANGE.first, POISON_RANGE.last + 1
                 )
             )
-            else ItemEffect.Poison(Random.nextInt(POISON_RANGE.first, POISON_RANGE.last + 1))
 
         } else {
             if (Random.nextDouble() < POSITIVE_ATK_PROB) ItemEffect.BuffAttack(
@@ -68,8 +73,11 @@ object ItemFactory {
                     BUFF_ATTACK_RANGE.first, BUFF_ATTACK_RANGE.last + 1
                 )
             )
-            else ItemEffect.DebuffAttack(Random.nextInt(DEBUFF_ATTACK_RANGE.first, DEBUFF_ATTACK_RANGE.last + 1))
-
+            else ItemEffect.DebuffAttack(
+                Random.nextInt(
+                    DEBUFF_ATTACK_RANGE.first, DEBUFF_ATTACK_RANGE.last + 1
+                )
+            )
         }
 
         return Item(x, y, effect)
