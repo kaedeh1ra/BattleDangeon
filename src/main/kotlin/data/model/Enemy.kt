@@ -9,7 +9,7 @@ class Enemy(
     override var x: Int,
     override var y: Int,
     override var hp: Int = Random.nextInt(9, 16 + 1),
-    override var attackPower: Int = Random.nextInt(3, 6)
+    override var attackPower: Int = Random.nextInt(3, 6 + 1)
 ) : Entity, Combatant {
     override val symbol: Char = 'E'
 
